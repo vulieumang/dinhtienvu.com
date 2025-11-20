@@ -19,7 +19,7 @@ window.addEventListener('scroll', () => {
 // ===================================
 navToggle.addEventListener('click', () => {
   navLinks.classList.toggle('active');
-  
+
   // Animate hamburger icon
   const spans = navToggle.querySelectorAll('span');
   spans.forEach((span, index) => {
@@ -53,7 +53,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   anchor.addEventListener('click', function (e) {
     e.preventDefault();
     const target = document.querySelector(this.getAttribute('href'));
-    
+
     if (target) {
       const offsetTop = target.offsetTop - 80; // Account for fixed navbar
       window.scrollTo({
@@ -91,12 +91,12 @@ document.querySelectorAll('.fade-in').forEach(element => {
 const serviceCards = document.querySelectorAll('.service-card');
 
 serviceCards.forEach(card => {
-  card.addEventListener('mouseenter', function() {
+  card.addEventListener('mouseenter', function () {
     // Add subtle scale effect
     this.style.transform = 'translateY(-8px) scale(1.02)';
   });
-  
-  card.addEventListener('mouseleave', function() {
+
+  card.addEventListener('mouseleave', function () {
     this.style.transform = '';
   });
 });
@@ -107,13 +107,13 @@ serviceCards.forEach(card => {
 const contactCards = document.querySelectorAll('.contact-card');
 
 contactCards.forEach(card => {
-  card.addEventListener('mouseenter', function() {
+  card.addEventListener('mouseenter', function () {
     const icon = this.querySelector('.contact-icon');
     icon.style.transform = 'scale(1.1) rotate(5deg)';
     icon.style.transition = 'transform 0.3s ease';
   });
-  
-  card.addEventListener('mouseleave', function() {
+
+  card.addEventListener('mouseleave', function () {
     const icon = this.querySelector('.contact-icon');
     icon.style.transform = '';
   });
@@ -138,20 +138,20 @@ updateFooterYear();
 const buttons = document.querySelectorAll('.btn');
 
 buttons.forEach(button => {
-  button.addEventListener('click', function(e) {
+  button.addEventListener('click', function (e) {
     const ripple = document.createElement('span');
     const rect = this.getBoundingClientRect();
     const size = Math.max(rect.width, rect.height);
     const x = e.clientX - rect.left - size / 2;
     const y = e.clientY - rect.top - size / 2;
-    
+
     ripple.style.width = ripple.style.height = size + 'px';
     ripple.style.left = x + 'px';
     ripple.style.top = y + 'px';
     ripple.classList.add('ripple');
-    
+
     this.appendChild(ripple);
-    
+
     setTimeout(() => {
       ripple.remove();
     }, 600);
@@ -159,16 +159,41 @@ buttons.forEach(button => {
 });
 
 // ===================================
-// Parallax Effect for Hero Background
+// Smooth Parallax Effect for Hero Section
 // ===================================
-window.addEventListener('scroll', () => {
+let ticking = false;
+let lastScrollY = 0;
+
+function updateParallax() {
   const scrolled = window.pageYOffset;
+  const heroContent = document.querySelector('.hero-content');
   const hero = document.querySelector('.hero');
-  
-  if (hero) {
-    const parallaxSpeed = 0.5;
-    hero.style.transform = `translateY(${scrolled * parallaxSpeed}px)`;
+
+  if (heroContent && hero) {
+    // Smooth parallax for hero content
+    const parallaxSpeed = 0.3;
+    const translateY = scrolled * parallaxSpeed;
+
+    // Smooth opacity fade
+    const opacity = 1 - (scrolled / 800);
+
+    heroContent.style.transform = `translateY(${translateY}px)`;
+    heroContent.style.opacity = Math.max(0, opacity);
   }
+
+  ticking = false;
+}
+
+function requestTick() {
+  if (!ticking) {
+    requestAnimationFrame(updateParallax);
+    ticking = true;
+  }
+}
+
+window.addEventListener('scroll', () => {
+  lastScrollY = window.pageYOffset;
+  requestTick();
 });
 
 // ===================================
@@ -179,16 +204,16 @@ const navItems = document.querySelectorAll('.nav-links a');
 
 window.addEventListener('scroll', () => {
   let current = '';
-  
+
   sections.forEach(section => {
     const sectionTop = section.offsetTop;
     const sectionHeight = section.clientHeight;
-    
+
     if (window.pageYOffset >= sectionTop - 100) {
       current = section.getAttribute('id');
     }
   });
-  
+
   navItems.forEach(item => {
     item.classList.remove('active');
     if (item.getAttribute('href') === `#${current}`) {
@@ -202,10 +227,10 @@ window.addEventListener('scroll', () => {
 // ===================================
 function debounce(func, wait = 10, immediate = true) {
   let timeout;
-  return function() {
+  return function () {
     const context = this;
     const args = arguments;
-    const later = function() {
+    const later = function () {
       timeout = null;
       if (!immediate) func.apply(context, args);
     };

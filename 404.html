@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Trang không tìm thấy - 404 Error">
+    <title>404 - Không tìm thấy trang | Đinh Tiến Vũ</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon.png">
+    <link rel="apple-touch-icon" href="favicon.png">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .error-page {
+            min-height: 80vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding-top: 80px;
+            /* Offset for fixed navbar */
+        }
+
+        .error-content {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            padding: var(--spacing-2xl);
+            border-radius: var(--radius-xl);
+            border: 1px solid var(--glass-border);
+            box-shadow: var(--glass-shadow);
+            max-width: 600px;
+            width: 90%;
+            will-change: transform, opacity;
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        .error-code {
+            font-size: clamp(6rem, 15vw, 10rem);
+            font-weight: 800;
+            line-height: 1;
+            margin-bottom: var(--spacing-md);
+            background: linear-gradient(135deg, #ffffff 0%, #a8edea 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 0 40px rgba(255, 255, 255, 0.2);
+        }
+
+        .error-title {
+            font-size: clamp(1.5rem, 4vw, 2rem);
+            margin-bottom: var(--spacing-sm);
+            color: var(--text-primary);
+        }
+
+        .error-message {
+            color: var(--text-secondary);
+            font-size: 1.125rem;
+            margin-bottom: var(--spacing-xl);
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="/" class="nav-logo">Đinh Tiến Vũ</a>
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="/">Trang Chủ</a></li>
+                <li><a href="/#services">Dịch Vụ</a></li>
+                <li><a href="/#contact">Liên Hệ</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <section class="error-page section">
+        <div class="container" style="display: flex; justify-content: center;">
+            <div class="error-content">
+                <div class="error-code">404</div>
+                <h1 class="error-title">Ối! Trang không tồn tại</h1>
+                <p class="error-message">
+                    Có vẻ như trang bạn đang tìm kiếm đã bị di chuyển hoặc không còn tồn tại.
+                    Đừng lo lắng, hãy quay về trang chủ nhé!
+                </p>
+                <a href="/" class="btn btn-primary">
+                    <span>Quay Lại Trang Chủ</span>
+                    <span>🏠</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Đinh Tiến Vũ. Chuyên gia công nghệ & dịch vụ.</p>
+            <p>Được thiết kế với ❤️ và công nghệ hiện đại</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="script.js"></script>
+</body>
+
+</html>

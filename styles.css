@@ -327,7 +327,7 @@ a {
   font-size: 1.125rem;
   cursor: pointer;
   border: none;
-  transition: all var(--transition-base);
+  transition: transform var(--transition-base), box-shadow var(--transition-base), background var(--transition-base), border-color var(--transition-base), color var(--transition-base);
   position: relative;
   overflow: hidden;
   backdrop-filter: blur(10px);
@@ -412,7 +412,8 @@ a {
   border-radius: var(--radius-lg);
   border: 1px solid var(--glass-border);
   box-shadow: var(--glass-shadow);
-  transition: all var(--transition-base);
+  transition: transform var(--transition-base), background var(--transition-base), border-color var(--transition-base), box-shadow var(--transition-base);
+  will-change: transform, box-shadow;
   position: relative;
   overflow: hidden;
 }
@@ -533,7 +534,8 @@ a {
   border-radius: var(--radius-lg);
   border: 1px solid var(--glass-border);
   box-shadow: var(--glass-shadow);
-  transition: all var(--transition-base);
+  transition: transform var(--transition-base), background var(--transition-base), border-color var(--transition-base), box-shadow var(--transition-base);
+  will-change: transform, box-shadow;
   flex: 1;
   min-width: 280px;
   max-width: 350px;

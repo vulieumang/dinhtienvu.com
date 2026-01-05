@@ -22,20 +22,113 @@
         rel="stylesheet">
 
     <!-- Styles -->
-    <link rel="stylesheet" href="styles.css">
     <style>
+        :root {
+            --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --accent-gradient: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            --liquid-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            --text-primary: #ffffff;
+            --text-secondary: rgba(255, 255, 255, 0.9);
+            --text-light: rgba(255, 255, 255, 0.7);
+            --glass-bg: rgba(255, 255, 255, 0.05);
+            --glass-border: rgba(255, 255, 255, 0.2);
+            --glass-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+            --font-primary: 'Inter', sans-serif;
+            --font-heading: 'Outfit', sans-serif;
+            --radius-md: 1rem;
+            --radius-lg: 1.5rem;
+            --radius-xl: 2rem;
+            --spacing-sm: 1rem;
+            --spacing-md: 1.5rem;
+            --spacing-lg: 2rem;
+            --spacing-xl: 3rem;
+            --spacing-2xl: 4rem;
+            --transition-base: 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-primary);
+            color: var(--text-primary);
+            background: #0f0c29;
+            background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
+            min-height: 100vh;
+            overflow-x: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Navbar Styles */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--glass-border);
+            padding: var(--spacing-sm) 0;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--spacing-lg);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-logo {
+            font-family: var(--font-heading);
+            font-size: 1.5rem;
+            font-weight: 700;
+            text-decoration: none;
+            color: #fff;
+            background: linear-gradient(135deg, #ffffff 0%, #a8edea 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: var(--spacing-lg);
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition-base);
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+        }
+
+        .nav-links a:hover {
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+        }
+
+        /* Error Page Styles */
         .error-page {
-            min-height: 80vh;
+            flex: 1;
             display: flex;
             align-items: center;
             justify-content: center;
-            text-align: center;
             padding-top: 80px;
-            /* Offset for fixed navbar */
         }
 
         .error-content {
-            background: rgba(255, 255, 255, 0.05);
+            background: var(--glass-bg);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
             padding: var(--spacing-2xl);
@@ -44,26 +137,26 @@
             box-shadow: var(--glass-shadow);
             max-width: 600px;
             width: 90%;
-            will-change: transform, opacity;
-            animation: fadeInUp 0.8s ease forwards;
+            text-align: center;
         }
 
         .error-code {
+            font-family: var(--font-heading);
             font-size: clamp(6rem, 15vw, 10rem);
             font-weight: 800;
             line-height: 1;
             margin-bottom: var(--spacing-md);
             background: linear-gradient(135deg, #ffffff 0%, #a8edea 100%);
             -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
             background-clip: text;
-            text-shadow: 0 0 40px rgba(255, 255, 255, 0.2);
+            -webkit-text-fill-color: transparent;
+            animation: float 4s ease-in-out infinite;
         }
 
         .error-title {
+            font-family: var(--font-heading);
             font-size: clamp(1.5rem, 4vw, 2rem);
             margin-bottom: var(--spacing-sm);
-            color: var(--text-primary);
         }
 
         .error-message {
@@ -75,6 +168,41 @@
             margin-right: auto;
         }
 
+        /* Buttons */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1rem 2rem;
+            border-radius: var(--radius-md);
+            font-weight: 600;
+            text-decoration: none;
+            transition: var(--transition-base);
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.8) 0%, rgba(118, 75, 162, 0.8) 100%);
+            color: white;
+            box-shadow: 0 8px 32px rgba(102, 126, 234, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 40px rgba(102, 126, 234, 0.4);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            border: 1px solid var(--glass-border);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
         .error-actions {
             display: flex;
             flex-direction: column;
@@ -84,10 +212,41 @@
 
         .quick-links {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: repeat(2, 1fr);
             gap: var(--spacing-md);
             width: 100%;
             margin-top: var(--spacing-md);
+        }
+
+        /* Footer */
+        .footer {
+            background: rgba(0, 0, 0, 0.3);
+            padding: var(--spacing-xl) 0;
+            text-align: center;
+            border-top: 1px solid var(--glass-border);
+        }
+
+        .footer p {
+            color: var(--text-secondary);
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        .nav-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 4px;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        .nav-toggle span {
+            width: 25px;
+            height: 3px;
+            background: #fff;
+            border-radius: 2px;
+            transition: 0.3s;
         }
 
         @keyframes float {
@@ -98,17 +257,48 @@
             }
 
             50% {
-                transform: translateY(-10px);
+                transform: translateY(-15px);
             }
         }
 
-        .error-code {
-            animation: float 4s ease-in-out infinite;
+        @media (max-width: 768px) {
+            .nav-toggle {
+                display: flex;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 70px;
+                left: 10%;
+                right: 10%;
+                background: rgba(15, 12, 41, 0.95);
+                backdrop-filter: blur(20px);
+                border: 1px solid var(--glass-border);
+                flex-direction: column;
+                padding: var(--spacing-lg);
+                border-radius: var(--radius-md);
+                transform: translateY(-150%);
+                opacity: 0;
+                transition: 0.4s ease;
+            }
+
+            .nav-links.active {
+                transform: translateY(0);
+                opacity: 1;
+            }
+
+            .error-content {
+                padding: var(--spacing-lg);
+            }
         }
 
-        @media (max-width: 600px) {
+        @media (max-width: 480px) {
             .quick-links {
                 grid-template-columns: 1fr;
+            }
+
+            .error-code {
+                font-size: 5rem;
             }
         }
     </style>
@@ -116,13 +306,11 @@
 
 <body>
     <!-- Navigation -->
-    <nav class="navbar" id="navbar">
+    <nav class="navbar">
         <div class="nav-container">
             <a href="/" class="nav-logo">Đinh Tiến Vũ</a>
             <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
-                <span></span>
-                <span></span>
-                <span></span>
+                <span></span><span></span><span></span>
             </button>
             <ul class="nav-links" id="navLinks">
                 <li><a href="/">Trang Chủ</a></li>
@@ -133,31 +321,29 @@
     </nav>
 
     <!-- Main Content -->
-    <section class="error-page section">
-        <div class="container" style="display: flex; justify-content: center;">
-            <div class="error-content">
-                <div class="error-code">404</div>
-                <h1 class="error-title">Lạc đường rồi! Nhưng không sao cả...</h1>
-                <p class="error-message">
-                    Trang bạn đang tìm kiếm có thể đã thay đổi địa chỉ hoặc không còn tồn tại nữa.
-                    Đinh Tiến Vũ luôn sẵn sàng hỗ trợ bạn quay lại đúng hướng.
-                </p>
-                <div class="error-actions">
-                    <a href="/" class="btn btn-primary">
-                        <span>Quay Lại Trang Chủ</span>
-                        <span>🏠</span>
-                    </a>
+    <section class="error-page">
+        <div class="error-content">
+            <div class="error-code">404</div>
+            <h1 class="error-title">Lạc đường rồi! Nhưng không sao cả...</h1>
+            <p class="error-message">
+                Trang bạn đang tìm kiếm có thể đã thay đổi địa chỉ hoặc không còn tồn tại nữa.
+                Đinh Tiến Vũ luôn sẵn sàng hỗ trợ bạn quay lại đúng hướng.
+            </p>
+            <div class="error-actions">
+                <a href="/" class="btn btn-primary">
+                    <span>Quay Lại Trang Chủ</span>
+                    <span>🏠</span>
+                </a>
 
-                    <div class="quick-links">
-                        <a href="/#services" class="btn btn-secondary" style="padding: 0.75rem 1rem; font-size: 1rem;">
-                            <span>Dịch Vụ</span>
-                            <span>💼</span>
-                        </a>
-                        <a href="/#contact" class="btn btn-secondary" style="padding: 0.75rem 1rem; font-size: 1rem;">
-                            <span>Liên Hệ</span>
-                            <span>📩</span>
-                        </a>
-                    </div>
+                <div class="quick-links">
+                    <a href="/#services" class="btn btn-secondary" style="padding: 0.75rem; font-size: 0.9rem;">
+                        <span>Dịch Vụ</span>
+                        <span>💼</span>
+                    </a>
+                    <a href="/#contact" class="btn btn-secondary" style="padding: 0.75rem; font-size: 0.9rem;">
+                        <span>Liên Hệ</span>
+                        <span>📩</span>
+                    </a>
                 </div>
             </div>
         </div>
@@ -166,13 +352,40 @@
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
-            <p>&copy; 2025 Đinh Tiến Vũ. Chuyên gia công nghệ & dịch vụ.</p>
+            <p>&copy; <span id="year">2025</span> Đinh Tiến Vũ. Chuyên gia công nghệ & dịch vụ.</p>
             <p>Được thiết kế với ❤️ và công nghệ hiện đại</p>
         </div>
     </footer>
 
-    <!-- JavaScript -->
-    <script src="script.js"></script>
+    <!-- Inline Script -->
+    <script>
+        // Set dynamic year
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // Mobile menu toggle
+        const toggle = document.getElementById('navToggle');
+        const links = document.getElementById('navLinks');
+        const spans = toggle.querySelectorAll('span');
+
+        toggle.addEventListener('click', () => {
+            links.classList.toggle('active');
+            if (links.classList.contains('active')) {
+                spans[0].style.transform = 'rotate(45deg) translateY(10px)';
+                spans[1].style.opacity = '0';
+                spans[2].style.transform = 'rotate(-45deg) translateY(-10px)';
+            } else {
+                spans.forEach(s => { s.style.transform = ''; s.style.opacity = ''; });
+            }
+        });
+
+        // Close menu on link click
+        links.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                links.classList.remove('active');
+                spans.forEach(s => { s.style.transform = ''; s.style.opacity = ''; });
+            });
+        });
+    </script>
 </body>
 
 </html>

@@ -5,6 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Trang không tìm thấy - 404 Error">
+    <meta name="robots" content="noindex, follow">
+    <meta name="googlebot" content="noindex">
     <title>404 - Không tìm thấy trang | Đinh Tiến Vũ</title>
 
     <!-- Favicon -->
@@ -68,6 +70,46 @@
             color: var(--text-secondary);
             font-size: 1.125rem;
             margin-bottom: var(--spacing-xl);
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .error-actions {
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-lg);
+            align-items: center;
+        }
+
+        .quick-links {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: var(--spacing-md);
+            width: 100%;
+            margin-top: var(--spacing-md);
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        .error-code {
+            animation: float 4s ease-in-out infinite;
+        }
+
+        @media (max-width: 600px) {
+            .quick-links {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
@@ -95,15 +137,28 @@
         <div class="container" style="display: flex; justify-content: center;">
             <div class="error-content">
                 <div class="error-code">404</div>
-                <h1 class="error-title">Ối! Trang không tồn tại</h1>
+                <h1 class="error-title">Lạc đường rồi! Nhưng không sao cả...</h1>
                 <p class="error-message">
-                    Có vẻ như trang bạn đang tìm kiếm đã bị di chuyển hoặc không còn tồn tại.
-                    Đừng lo lắng, hãy quay về trang chủ nhé!
+                    Trang bạn đang tìm kiếm có thể đã thay đổi địa chỉ hoặc không còn tồn tại nữa.
+                    Đinh Tiến Vũ luôn sẵn sàng hỗ trợ bạn quay lại đúng hướng.
                 </p>
-                <a href="/" class="btn btn-primary">
-                    <span>Quay Lại Trang Chủ</span>
-                    <span>🏠</span>
-                </a>
+                <div class="error-actions">
+                    <a href="/" class="btn btn-primary">
+                        <span>Quay Lại Trang Chủ</span>
+                        <span>🏠</span>
+                    </a>
+
+                    <div class="quick-links">
+                        <a href="/#services" class="btn btn-secondary" style="padding: 0.75rem 1rem; font-size: 1rem;">
+                            <span>Dịch Vụ</span>
+                            <span>💼</span>
+                        </a>
+                        <a href="/#contact" class="btn btn-secondary" style="padding: 0.75rem 1rem; font-size: 1rem;">
+                            <span>Liên Hệ</span>
+                            <span>📩</span>
+                        </a>
+                    </div>
+                </div>
             </div>
         </div>
     </section>

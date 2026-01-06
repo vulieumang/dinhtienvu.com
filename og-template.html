@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=1200, height=630">
+    <title>OG Image Template Refined</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Outfit:wght@700&display=swap');
+
+        :root {
+            --primary-bg: #000;
+            --glass-bg: rgba(255, 255, 255, 0.05);
+            --glass-border: rgba(255, 255, 255, 0.2);
+            --text-glow: linear-gradient(135deg, #ffffff 0%, #a8edea 100%);
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            width: 1200px;
+            height: 630px;
+            overflow: hidden;
+            font-family: 'Inter', sans-serif;
+            background: var(--primary-bg);
+        }
+
+        .container {
+            width: 1200px;
+            height: 630px;
+            background: url('og-background.png') no-repeat center center;
+            background-size: cover;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            /* Reverting to closer to center but slightly biased upwards as requested */
+            justify-content: flex-start;
+            padding-top: 80px;
+            position: relative;
+        }
+
+        .glass-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            border-radius: 2.5rem;
+            padding: 3rem 4rem;
+            border: 1px solid var(--glass-border);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            max-width: 800px;
+        }
+
+        .avatar-container {
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            border: 4px solid rgba(255, 255, 255, 0.3);
+            margin-bottom: 2rem;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+            background: #222;
+        }
+
+        .avatar {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            /* Adjusting position to shift the photo down (revealing more of the top/headroom) */
+            object-position: center 25%;
+        }
+
+        .subtitle {
+            font-size: 1.3rem;
+            color: rgba(255, 255, 255, 0.9);
+            font-weight: 600;
+            margin-bottom: 0.8rem;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+        }
+
+        .name {
+            font-family: 'Outfit', sans-serif;
+            font-size: 5rem;
+            font-weight: 700;
+            background: var(--text-glow);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin: 0;
+            line-height: 1.1;
+            text-transform: uppercase;
+        }
+
+        .services {
+            display: flex;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .service-pill {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 0.8rem 1.5rem;
+            border-radius: 1rem;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            color: white;
+            font-weight: 600;
+            font-size: 1.1rem;
+            backdrop-filter: blur(10px);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="glass-card">
+            <div class="avatar-container">
+                <img src="avatar.png" alt="Đinh Tiến Vũ" class="avatar">
+            </div>
+            <div class="subtitle">CHUYÊN GIA CÔNG NGHỆ & DỊCH VỤ</div>
+            <h1 class="name">ĐINH TIẾN VŨ</h1>
+            <div class="services">
+                <div class="service-pill">💻 Hỗ Trợ Máy Tính</div>
+                <div class="service-pill">🚀 Zoom Premium</div>
+                <div class="service-pill">📈 TradingView</div>
+                <div class="service-pill">🌐 Thiết Kế Web</div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
